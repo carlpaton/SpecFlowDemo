@@ -1,4 +1,6 @@
-﻿using TechTalk.SpecFlow;
+﻿using Example;
+using TechTalk.SpecFlow;
+using Xunit;
 
 namespace IntegrationTests.Steps
 {
@@ -6,38 +8,38 @@ namespace IntegrationTests.Steps
     public sealed class CalculatorStepDefinitions
     {
         private readonly ScenarioContext _scenarioContext;
+        private readonly Calculator _calculator;
+
+        private int _result;
 
         public CalculatorStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
+            _calculator = new Calculator();
         }
 
         [Given("the first number is (.*)")]
         public void GivenTheFirstNumberIs(int number)
         {
-            //TODO: implement arrange (precondition) logic
-            _scenarioContext.Pending();
+            _calculator.FirstNumber = number;
         }
 
         [Given("the second number is (.*)")]
         public void GivenTheSecondNumberIs(int number)
         {
-            //TODO: implement arrange (precondition) logic
-            _scenarioContext.Pending();
+            _calculator.SecondNumber = number;
         }
 
         [When("the two numbers are added")]
         public void WhenTheTwoNumbersAreAdded()
         {
-            //TODO: implement act (action) logic
-            _scenarioContext.Pending();
+            _result = _calculator.Add();
         }
 
         [Then("the result should be (.*)")]
-        public void ThenTheResultShouldBe(int result)
+        public void ThenTheResultShouldBe(int expectedResult)
         {
-            //TODO: implement assert (verification) logic
-            _scenarioContext.Pending();
+            Assert.Equal(expectedResult, _result);
         }
     }
 }
