@@ -7,15 +7,12 @@ namespace IntegrationTests.Steps
     [Binding]
     public sealed class CalculatorStepDefinitions
     {
-        private readonly ScenarioContext _scenarioContext;
         private readonly Calculator _calculator;
-
         private int _result;
 
-        public CalculatorStepDefinitions(ScenarioContext scenarioContext)
+        public CalculatorStepDefinitions(Calculator calculator)
         {
-            _scenarioContext = scenarioContext;
-            _calculator = new Calculator();
+            _calculator = calculator;
         }
 
         [Given("the first number is (.*)")]
